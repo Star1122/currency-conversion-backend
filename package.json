@@ -25,7 +25,7 @@
     "helmet": "^3.21.2",
     "lodash": "^4.17.15",
     "method-override": "^3.0.0",
-    "mongoose": "^5.5.12",
+    "mongoose": "^5.7.7",
     "morgan": "^1.9.1",
     "path": "^0.12.7",
     "validator": "^11.0.0"
