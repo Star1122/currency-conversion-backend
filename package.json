@@ -8,7 +8,18 @@
   },
   "scripts": {
     "start": "node app.js",
-    "lint": "eslint \"**/*.js\""
+    "lint": "eslint \"**/*.js\" --fix"
+  },
+  "lint-staged": {
+    "**/*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "bluebird": "^3.5.5",
@@ -36,7 +47,9 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-chai-friendly": "^0.4.1",
-    "eslint-plugin-import": "^2.17.3"
+    "eslint-plugin-import": "^2.17.3",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2"
   },
   "engines": {
     "node": ">=8.16.0",
