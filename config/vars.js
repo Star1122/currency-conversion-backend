@@ -1,6 +1,6 @@
 const path = require('path');
 
-// load environment variables from .env file
+// Load environment variables from .env file
 require('dotenv-safe').config({
   allowEmptyValues: true,
   path: path.join(__dirname, '../.env'),
@@ -14,4 +14,8 @@ module.exports = {
     uri: process.env.MONGODB_URI,
   },
   logs: process.env.NODE_ENV === 'production' ? 'combined' : 'dev',
+  api: {
+    key: process.env.API_KEY,
+    url: process.env.API_URL,
+  },
 };
