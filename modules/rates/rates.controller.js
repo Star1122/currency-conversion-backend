@@ -7,7 +7,7 @@ const { handleError, responseWithResult } = require('../../utils');
 // Get rates
 exports.index = (req, res) => {
   Rates
-    .find()
+    .findOne()
     .select('base rates updatedAt')
     .execAsync()
     .then(responseWithResult(res))
@@ -21,10 +21,10 @@ const fetch = async () => {
       method: 'GET',
       uri: `${api.url}/latest`,
       qs: {
-        access_key: api.key
+        access_key: api.key,
       },
       json: true,
-      gzip: true
+      gzip: true,
     };
 
     const response = await rp(requestOptions);

@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const { ValidationError } = require('mongoose').Error;
 
 function handleError(res, statusCode = 500) {
@@ -17,12 +16,6 @@ function handleError(res, statusCode = 500) {
   };
 }
 
-function respondWith(res, statusCode = 200) {
-  return () => {
-    res.status(statusCode).end();
-  };
-}
-
 function responseWithResult(res, statusCode = 200) {
   return (entity) => {
     if (entity) {
@@ -31,34 +24,10 @@ function responseWithResult(res, statusCode = 200) {
   };
 }
 
-function handleEntityNotFound(res) {
-  return (entity) => {
-    if (!entity) {
-      res.status(404).end();
-      return Promise.reject(entity);
-    }
-    return entity;
-  };
-}
-
-function saveUpdates(updates) {
-  return (entity) => {
-    if (updates) {
-      _.assign(entity, updates);
-    }
-    return entity.saveAsync();
-  };
-}
-
-function removeEntity(res) {
-  return entity => entity && entity.removeAsync().then(respondWith(res, 204));
-}
+const reducer = field => (total, current) => total + current[field];
 
 module.exports = {
   handleError,
-  respondWith,
   responseWithResult,
-  handleEntityNotFound,
-  saveUpdates,
-  removeEntity,
+  reducer,
 };
