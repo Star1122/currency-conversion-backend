@@ -42,7 +42,10 @@
     "path": "^0.12.7",
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
-    "validator": "^11.0.0"
+    "socketcluster": "^14.4.1",
+    "socketcluster-server": "^14.6.0",
+    "validator": "^11.0.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

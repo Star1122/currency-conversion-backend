@@ -3,6 +3,7 @@ const rp = require('request-promise');
 const Rates = require('./rates.model');
 const { api } = require('../../config/vars');
 const { handleError, responseWithResult } = require('../../utils');
+const logger = require('../../logger');
 
 // Get rates
 exports.index = (req, res) => {
@@ -53,7 +54,7 @@ const fetch = async () => {
 
     await rate.save();
   } catch (e) {
-    console.log('[rates:fetch]: ', e.message);
+    logger.error('[Rates::fetch]: %s', e.message);
   }
 
   // Fetch again after 1 hour

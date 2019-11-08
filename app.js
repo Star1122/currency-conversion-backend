@@ -6,6 +6,7 @@ const chalk = require('chalk');
 
 const app = require('./config/express');
 const mongoose = require('./config/mongoose');
+const socket = require('./sockets');
 
 mongoose.connect();
 
@@ -19,6 +20,8 @@ app.listen(app.get('port'), () => {
   console.log('  Press CTRL-C to stop\n');
 
   fetch();
+
+  socket.start();
 });
 
 module.exports = app;

@@ -3,6 +3,7 @@ const { validationResult } = require('express-validator/check');
 const Rates = require('../rates/rates.model');
 const Converts = require('./converts.model');
 const { handleError, responseWithResult, reducer } = require('../../utils');
+const logger = require('../../logger');
 
 // Get converts
 exports.index = (req, res) => {
@@ -87,6 +88,8 @@ exports.convert = async (req, res) => {
       .status(200)
       .json({ result: converted });
   } catch (e) {
+    logger.error('[Convert::convert]: %s', e.message);
+
     res
       .status(500)
       .json({ message: e.message });

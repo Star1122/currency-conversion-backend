@@ -18,4 +18,7 @@ module.exports = {
     key: process.env.API_KEY,
     url: process.env.API_URL,
   },
+  socket: {
+    port: process.env.SOCKET_PORT,
+  },
 };
