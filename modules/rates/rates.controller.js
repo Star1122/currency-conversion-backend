@@ -14,6 +14,17 @@ exports.index = (req, res) => {
     .catch(handleError(res));
 };
 
+// Get currencies
+exports.getCurrencies = (req, res) => {
+  Rates
+    .findOne()
+    .select('rates')
+    .execAsync()
+    .then(res => Object.keys(res.rates))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+
 // Fetch rates from 3rd party
 const fetch = async () => {
   try {

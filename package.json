@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/Star1122/currency-conversion-backend"
   },
+  "license": "MIT",
   "scripts": {
     "start": "node app.js",
     "lint": "eslint \"**/*.js\" --fix"
